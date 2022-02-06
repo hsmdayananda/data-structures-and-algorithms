@@ -7,20 +7,26 @@ import java.util.Arrays;
 
 public class Application {
     public static void main(String[] args) {
-        Vertex<Integer> v0 = new Vertex<>(0);
-        Vertex<Integer> v1 = new Vertex<>(1);
-        Vertex<Integer> v2 = new Vertex<>(2);
-        Vertex<Integer> v3 = new Vertex<>(3);
-        Vertex<Integer> v4 = new Vertex<>(4);
-        Vertex<Integer> v5 = new Vertex<>(5);
-        Vertex<Integer> v6 = new Vertex<>(6);
+        Vertex<String> vX = new Vertex<>("X");
+        Vertex<String> vC = new Vertex<>("C");
+        Vertex<String> vE = new Vertex<>("E");
+        Vertex<String> vx = new Vertex<>("x");
+        Vertex<String> vG = new Vertex<>("G");
+        Vertex<String> vA = new Vertex<>("A");
+        Vertex<String> vB = new Vertex<>("B");
+        Vertex<String> vD = new Vertex<>("D");
+        Vertex<String> vF = new Vertex<>("F");
 
 
-        v0.setNeighbors(Arrays.asList(v1,v5,v6));
-        v1.setNeighbors( Arrays.asList(v3, v4, v5));
-        v4.setNeighbors(Arrays.asList(v2, v6));
-        v6.setNeighbors(Arrays.asList(v0));
+        vX.setNeighbors(Arrays.asList(vC,vA));
+        vC.setNeighbors( Arrays.asList(vX,vE));
+        vE.setNeighbors(Arrays.asList(vC,vF,vG));
+        vG.setNeighbors(Arrays.asList(vE,vD));
+        vA.setNeighbors(Arrays.asList(vX,vB));
+        vB.setNeighbors(Arrays.asList(vA,vF,vD));
+        vD.setNeighbors(Arrays.asList(vB,vF,vG));
+        vF.setNeighbors(Arrays.asList(vB,vE,vD));
 
-        new DepthFirstSearch<Integer>().traverse(v6);}
+        new DepthFirstSearch<String>().traverse(vX);}
 
 }
